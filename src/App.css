@@ -17,6 +17,14 @@
   color: white;
 }
 
+ul {
+  padding: 0;
+}
+
 .App-link {
   color: #09d3ac;
+}
+
+.elapsedString {
+  font-family: monospace;
 }
