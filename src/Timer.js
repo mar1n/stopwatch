@@ -14,7 +14,6 @@ class Timer extends React.Component {
                 onResetClick={this.props.onResetClick}
                 onLapClick={this.props.onLapClick}
                 />
-            
         ));
         const laps = this.props.laps.map((laps, index) => (
             <ul><li key={index}>{++index} Lap {laps}</li></ul>

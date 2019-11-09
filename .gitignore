@@ -11,6 +11,9 @@
 # production
 /build
 
+#ignore folder name .idea
+/.idea
+
 # misc
 .DS_Store
 .env.local
