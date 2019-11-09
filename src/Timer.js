@@ -15,16 +15,18 @@ class Timer extends React.Component {
                 onLapClick={this.props.onLapClick}
             />
         ));
-        const laps = this.props.laps.map((laps, index) => (
-            <ul><li key={index}>{++index} Lap {laps}</li></ul>
-        ));
+        const laps = this.props.laps.map((laps, index) =>
+            <li key={index}>
+                {++index} Lap {laps}
+            </li>
+        );
         return (
             <div>
                 <div id="timer">
                     {timer}
                 </div>
                 <div id='laps'>
-                    {laps}
+                    <ul>{laps}</ul>
                 </div>
             </div>
         );

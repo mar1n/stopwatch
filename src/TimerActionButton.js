@@ -1,19 +1,18 @@
 import React from 'react';
 
-class TimerActionButton extends React.Component {
-    render() {
-        if (this.props.timerIsRunning) {
+function TimerActionButton(props) {
+        if (props.timerIsRunning) {
             return (
                 <div>
                     <button
                         className='ui bottom attached red basic button'
-                        onClick={this.props.onStopClick}
+                        onClick={props.onStopClick}
                     >
                         Stop
                     </button>
                     <button
                         className='Lap'
-                        onClick={this.props.onLapClick}
+                        onClick={props.onLapClick}
                     >
                         Lap
                     </button>
@@ -24,20 +23,19 @@ class TimerActionButton extends React.Component {
                 <div>
                     <button
                         className='ui bottom attached green basic button'
-                        onClick={this.props.onStartClick}
+                        onClick={props.onStartClick}
                     >
                         Start
                     </button>
                     <button
                         className='reset'
-                        onClick={this.props.onResetClick}
+                        onClick={props.onResetClick}
                     >
                         Reset
                     </button>
                 </div>
             );
         }
-    }
 }
 
 export default TimerActionButton;
