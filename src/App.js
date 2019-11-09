@@ -1,11 +1,11 @@
 import React from 'react';
-import StopWatchDashBoard from './StopWatchDashBoard';
+import StopWatchDashboard from './StopWatchDashboard';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <StopWatchDashBoard/>
+      <StopWatchDashboard/>
     </div>
   );
 }

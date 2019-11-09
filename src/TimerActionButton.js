@@ -2,12 +2,12 @@ import React from 'react';
 
 class TimerActionButton extends React.Component {
     render() {
-        if(this.props.timerIsRunning) {
+        if (this.props.timerIsRunning) {
             return (
                 <div>
                     <button
-                      className='ui bottom attached red basic button'
-                      onClick={this.props.onStopClick}
+                        className='ui bottom attached red basic button'
+                        onClick={this.props.onStopClick}
                     >
                         Stop
                     </button>

@@ -1,4 +1,4 @@
-import React from'react';
+import React from 'react';
 import Timer from './Timer';
 
 class StopWatchDashBoard extends React.Component {
@@ -12,7 +12,7 @@ class StopWatchDashBoard extends React.Component {
                 runningSince: null,
             }
         ],
-        lap : [],
+        lap: [],
     };
 
     handleStartClick = () => {
@@ -25,16 +25,9 @@ class StopWatchDashBoard extends React.Component {
 
     handleResetClick = () => {
         this.setState({
-            time: this.state.time.map(timer => {return {...timer, elapsed:null, runningSince:null} }
-
-            // return Object.assign({}, timer , {
-            //     elapsed: null,
-            //     runningSince: null,
-            // })
-            ),
-            //time: [...this.state.time, {elapsed:null, runningSince:null}],
-        lap: [],})
-        //this.setState({ lap: [], });
+            time: this.state.time.map(timer => { return { ...timer, elapsed: null, runningSince: null } }),
+            lap: [],
+        })
     };
 
 
@@ -44,10 +37,8 @@ class StopWatchDashBoard extends React.Component {
         this.setState({
             time: this.state.time.map((timer) => {
                 if (timer) {
-                    return {...timer, runningSince:now}
-                    // return Object.assign({}, timer, {
-                    //     runningSince: now,});
-                } else {return timer;}
+                    return { ...timer, runningSince: now }
+                } else { return timer; }
             }),
         });
     };
@@ -58,21 +49,17 @@ class StopWatchDashBoard extends React.Component {
             time: this.state.time.map((timer) => {
                 if (timer) {
                     const lastElapsed = now - timer.runningSince;
-                    return {...timer, elapsed: timer.elapsed + lastElapsed, runningSince:null}
-                    // return Object.assign({}, timer, { 
-                    //     elapsed: timer.elapsed + lastElapsed,
-                    //     runningSince: null,});
+                    return { ...timer, elapsed: timer.elapsed + lastElapsed, runningSince: null }
                 } else {
                     return timer;
-                }}),
+                }
+            }),
         });
-        //console.log(test);
     };
 
     handleLapClick = (test) => {
         this.setState(state => {
             const lap = state.lap.concat(test);
-
             return {
                 lap,
             };
@@ -82,17 +69,16 @@ class StopWatchDashBoard extends React.Component {
 
     render() {
         return (
-          <div>
-              <Timer
-                time={this.state.time}
-                laps={this.state.lap}
-                onStartClick={this.handleStartClick}
-                onStopClick={this.handleStopClick}
-                onResetClick={this.handleResetClick}
-                onLapClick={this.handleLapClick}
-              />
-
-          </div>
+            <div>
+                <Timer
+                    time={this.state.time}
+                    laps={this.state.lap}
+                    onStartClick={this.handleStartClick}
+                    onStopClick={this.handleStopClick}
+                    onResetClick={this.handleResetClick}
+                    onLapClick={this.handleLapClick}
+                />
+            </div>
         );
     }
 }

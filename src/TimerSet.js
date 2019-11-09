@@ -8,7 +8,6 @@ const helpers = (function () {
             id: uuid.v4(), // eslint-disable-line no-undef
             elapsed: 0,
         };
-
         return timer;
     }
 
@@ -62,8 +61,6 @@ const helpers = (function () {
 
 class Time extends React.Component {
 
-
-
     componentDidMount() {
         this.forceUpdateInterval = setInterval(() => this.forceUpdate(), 50);
     }
@@ -87,17 +84,12 @@ class Time extends React.Component {
     };
 
     handleLapClick = () => {
-
         const test = helpers.renderElapsedString(this.props.elapsed, this.props.runningSince);
-        console.log(test);
         this.props.onLapClick(test);
     };
 
     render() {
-
         const elapsedString = helpers.renderElapsedString(this.props.elapsed, this.props.runningSince);
-
-
         return (
             <div className='ui centered card'>
                 <div className='content'>
@@ -109,16 +101,16 @@ class Time extends React.Component {
                     </div>
                     <div className='center aligned description'>
                         <div className="elapsedString">
-                            {elapsedString} 
+                            {elapsedString}
                         </div>
                     </div>
                     <div className='extra content'>
-            <span className='right floated edit icon'>
-              <i className='edit icon' />
-            </span>
+                        <span className='right floated edit icon'>
+                            <i className='edit icon' />
+                        </span>
                         <span className='right floated trash icon'>
-              <i className='trash icon' />
-            </span>
+                            <i className='trash icon' />
+                        </span>
                     </div>
                 </div>
                 <TimerActionButton
@@ -128,7 +120,6 @@ class Time extends React.Component {
                     onResetClick={this.handleResetClick}
                     onLapClick={this.handleLapClick}
                 />
-
             </div>
         )
     }

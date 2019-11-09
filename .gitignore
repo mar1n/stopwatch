@@ -14,9 +14,6 @@
 #ignore folder idea
 /.idea
 
-#ignore folder public
-/public
-
 # misc
 .DS_Store
 .env.local
