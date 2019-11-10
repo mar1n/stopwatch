@@ -57,9 +57,9 @@ class StopWatchDashBoard extends React.Component {
         });
     };
 
-    handleLapClick = (test) => {
+    handleLapClick = (results) => {
         this.setState(state => {
-            const lap = state.lap.concat(test);
+            const lap = state.lap.concat(results);
             return {
                 lap,
             };

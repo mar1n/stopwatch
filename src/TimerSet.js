@@ -65,9 +65,9 @@ const Time = (props) => {
 
     useEffect(() => {
         const interval = setInterval(forceUpdate, 50);
-        return () => 
+        return () =>
             clearInterval(interval)
-        
+
     }, [forceUpdate]);
 
     const handleStartClick = () => {
@@ -83,8 +83,8 @@ const Time = (props) => {
     };
 
     const handleLapClick = () => {
-        const test = helpers.renderElapsedString(props.elapsed, props.runningSince);
-        props.onLapClick(test);
+        const result = helpers.renderElapsedString(props.elapsed, props.runningSince);
+        props.onLapClick(result);
     };
 
 
@@ -97,7 +97,7 @@ const Time = (props) => {
             <div className='meta'>
                 {props.project}
             </div>
-            <div  className="elapsedString">
+            <div className="elapsedString">
                 {elapsedString}
             </div>
             <TimerActionButton
