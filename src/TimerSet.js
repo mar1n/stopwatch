@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import TimerActionButton from './TimerActionButton';
 const helpers = (function () {
     function newTimer(attrs = {}) {
@@ -59,70 +59,56 @@ const helpers = (function () {
 }());
 
 
-class Time extends React.Component {
+const Time = (props) => {
+    const [, forceState] = useState();
+    const forceUpdate = useCallback(() => forceState({}), []);
 
-    componentDidMount() {
-        this.forceUpdateInterval = setInterval(() => this.forceUpdate(), 50);
-    }
+    useEffect(() => {
+        const interval = setInterval(forceUpdate, 50);
+        return () => 
+            clearInterval(interval)
+        
+    }, [forceUpdate]);
 
-    componentWillUnmount() {
-        clearInterval(this.forceUpdateInterval);
-    }
-
-
-
-    handleStartClick = () => {
-        this.props.onStartClick();
+    const handleStartClick = () => {
+        props.onStartClick();
     };
 
-    handleStopClick = () => {
-        this.props.onStopClick();
+    const handleStopClick = () => {
+        props.onStopClick();
     };
 
-    handleResetClick = () => {
-        this.props.onResetClick();
+    const handleResetClick = () => {
+        props.onResetClick();
     };
 
-    handleLapClick = () => {
-        const test = helpers.renderElapsedString(this.props.elapsed, this.props.runningSince);
-        this.props.onLapClick(test);
+    const handleLapClick = () => {
+        const test = helpers.renderElapsedString(props.elapsed, props.runningSince);
+        props.onLapClick(test);
     };
 
-    render() {
-        const elapsedString = helpers.renderElapsedString(this.props.elapsed, this.props.runningSince);
-        return (
-            <div className='ui centered card'>
-                <div className='content'>
-                    <div className='header'>
-                        {this.props.title}
-                    </div>
-                    <div className='meta'>
-                        {this.props.project}
-                    </div>
-                    <div className='center aligned description'>
-                        <div className="elapsedString">
-                            {elapsedString}
-                        </div>
-                    </div>
-                    <div className='extra content'>
-                        <span className='right floated edit icon'>
-                            <i className='edit icon' />
-                        </span>
-                        <span className='right floated trash icon'>
-                            <i className='trash icon' />
-                        </span>
-                    </div>
-                </div>
-                <TimerActionButton
-                    timerIsRunning={!!this.props.runningSince}
-                    onStartClick={this.handleStartClick}
-                    onStopClick={this.handleStopClick}
-                    onResetClick={this.handleResetClick}
-                    onLapClick={this.handleLapClick}
-                />
+
+    const elapsedString = helpers.renderElapsedString(props.elapsed, props.runningSince);
+    return (
+        <div className='ui centered card'>
+            <div className='header'>
+                {props.title}
             </div>
-        )
-    }
+            <div className='meta'>
+                {props.project}
+            </div>
+            <div  className="elapsedString">
+                {elapsedString}
+            </div>
+            <TimerActionButton
+                timerIsRunning={!!props.runningSince}
+                onStartClick={handleStartClick}
+                onStopClick={handleStopClick}
+                onResetClick={handleResetClick}
+                onLapClick={handleLapClick}
+            />
+        </div>
+    );
 }
 
 export default Time;

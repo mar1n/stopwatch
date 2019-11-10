@@ -69,7 +69,7 @@ class StopWatchDashBoard extends React.Component {
 
     render() {
         return (
-            <div>
+            <>
                 <Timer
                     time={this.state.time}
                     laps={this.state.lap}
@@ -78,7 +78,7 @@ class StopWatchDashBoard extends React.Component {
                     onResetClick={this.handleResetClick}
                     onLapClick={this.handleLapClick}
                 />
-            </div>
+            </>
         );
     }
 }

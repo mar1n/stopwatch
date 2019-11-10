@@ -1,9 +1,9 @@
 import React from 'react';
 
-function TimerActionButton(props) {
+const TimerActionButton = (props) => {
         if (props.timerIsRunning) {
             return (
-                <div>
+                <>
                     <button
                         className='ui bottom attached red basic button'
                         onClick={props.onStopClick}
@@ -16,11 +16,11 @@ function TimerActionButton(props) {
                     >
                         Lap
                     </button>
-                </div>
+                </>
             );
         } else {
             return (
-                <div>
+                <>
                     <button
                         className='ui bottom attached green basic button'
                         onClick={props.onStartClick}
@@ -33,7 +33,7 @@ function TimerActionButton(props) {
                     >
                         Reset
                     </button>
-                </div>
+                </>
             );
         }
 }
