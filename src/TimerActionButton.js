@@ -1,8 +1,7 @@
 import React from 'react';
 
-const TimerActionButton = (props) => {
-        if (props.timerIsRunning) {
-            return (
+const TimerActionButton = (props) => (
+        props.timerIsRunning ?
                 <>
                     <button
                         className='ui bottom attached red basic button'
@@ -17,9 +16,8 @@ const TimerActionButton = (props) => {
                         Lap
                     </button>
                 </>
-            );
-        } else {
-            return (
+        :
+
                 <>
                     <button
                         className='ui bottom attached green basic button'
@@ -34,8 +32,7 @@ const TimerActionButton = (props) => {
                         Reset
                     </button>
                 </>
-            );
-        }
-}
+);
+
 
 export default TimerActionButton;
