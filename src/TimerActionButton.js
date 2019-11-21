@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TimerActionButton = ({timerIsRunning, onStopClick, onLapClick, onStartClick, onResetClick}) => (
+const TimerActionButton = ({ timerIsRunning, onStopClick, onLapClick, onStartClick, onResetClick }) => (
         timerIsRunning ?
                 <>
                     <button
