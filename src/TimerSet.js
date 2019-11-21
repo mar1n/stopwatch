@@ -59,7 +59,15 @@ const helpers = (function () {
 }());
 
 
-const Time = (props) => {
+const Time = ({ onStartClick,
+                onStopClick,
+                onResetClick,
+                onLapClick,
+                elapsed,
+                runningSince,
+                project,
+                title
+            }) => {
     const [, forceState] = useState();
     const forceUpdate = useCallback(() => forceState({}), []);
 
@@ -71,37 +79,37 @@ const Time = (props) => {
     }, [forceUpdate]);
 
     const handleStartClick = () => {
-        props.onStartClick();
+        onStartClick();
     };
 
     const handleStopClick = () => {
-        props.onStopClick();
+        onStopClick();
     };
 
     const handleResetClick = () => {
-        props.onResetClick();
+        onResetClick();
     };
 
     const handleLapClick = () => {
-        const result = helpers.renderElapsedString(props.elapsed, props.runningSince);
-        props.onLapClick(result);
+        const result = helpers.renderElapsedString(elapsed, runningSince);
+        onLapClick(result);
     };
 
 
-    const elapsedString = helpers.renderElapsedString(props.elapsed, props.runningSince);
+    const elapsedString = helpers.renderElapsedString(elapsed, runningSince);
     return (
         <div className='ui centered card'>
             <div className='header'>
-                {props.title}
+                {title}
             </div>
             <div className='meta'>
-                {props.project}
+                {project}
             </div>
             <div className="elapsedString">
                 {elapsedString}
             </div>
             <TimerActionButton
-                timerIsRunning={!!props.runningSince}
+                timerIsRunning={!!runningSince}
                 onStartClick={handleStartClick}
                 onStopClick={handleStopClick}
                 onResetClick={handleResetClick}
