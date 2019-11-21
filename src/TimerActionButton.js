@@ -1,17 +1,17 @@
 import React from 'react';
 
-const TimerActionButton = (props) => (
-        props.timerIsRunning ?
+const TimerActionButton = ({timerIsRunning, onStopClick, onLapClick, onStartClick, onResetClick}) => (
+        timerIsRunning ?
                 <>
                     <button
                         className='ui bottom attached red basic button'
-                        onClick={props.onStopClick}
+                        onClick={onStopClick}
                     >
                         Stop
                     </button>
                     <button
                         className='Lap'
-                        onClick={props.onLapClick}
+                        onClick={onLapClick}
                     >
                         Lap
                     </button>
@@ -21,13 +21,13 @@ const TimerActionButton = (props) => (
                 <>
                     <button
                         className='ui bottom attached green basic button'
-                        onClick={props.onStartClick}
+                        onClick={onStartClick}
                     >
                         Start
                     </button>
                     <button
                         className='reset'
-                        onClick={props.onResetClick}
+                        onClick={onResetClick}
                     >
                         Reset
                     </button>
