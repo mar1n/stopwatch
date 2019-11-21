@@ -1,86 +1,77 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Timer from './Timer';
 
-class StopWatchDashBoard extends React.Component {
+const StopWatchDashBoard = () => {
 
-    state = {
-        time: [
-            {
-                title: 'StopWatch',
-                project: 'Web Timer',
-                elapsed: null,
-                runningSince: null,
-            }
-        ],
-        lap: [],
+    const [time, setTime] = useState([
+        {
+            title: 'StopWatch',
+            project: 'Web Timer',
+            elapsed: null,
+            runningSince: null,
+        }
+    ]);
+    const [lap, setLap] = useState([]);
+
+    const handleStartClick = () => {
+        startTimer();
     };
 
-    handleStartClick = () => {
-        this.startTimer();
+    const handleStopClick = () => {
+        stopTimer();
     };
 
-    handleStopClick = () => {
-        this.stopTimer();
-    };
-
-    handleResetClick = () => {
-        this.setState({
-            time: this.state.time.map(timer => { return { ...timer, elapsed: null, runningSince: null } }),
-            lap: [],
-        })
+    const handleResetClick = () => {
+        setTime( time
+            .map(timer =>  (
+                { ...timer, elapsed: null, runningSince: null }
+                )));
+        setLap( [] );
     };
 
 
 
-    startTimer = () => {
+    const startTimer = () => {
         const now = Date.now();
-        this.setState({
-            time: this.state.time.map((timer) => {
-                if (timer) {
-                    return { ...timer, runningSince: now }
-                } else { return timer; }
-            }),
-        });
+        setTime(
+            time.map((timer) => 
+                timer ?
+                { ...timer, runningSince: now }
+                : timer
+            ),
+        );
     };
 
-    stopTimer = () => {
+    const stopTimer = () => {
         const now = Date.now();
-        this.setState({
-            time: this.state.time.map((timer) => {
-                if (timer) {
-                    const lastElapsed = now - timer.runningSince;
-                    return { ...timer, elapsed: timer.elapsed + lastElapsed, runningSince: null }
-                } else {
-                    return timer;
-                }
+        setTime(
+            time.map((timer) => {
+                const lastElapsed = now - timer.runningSince;
+                return ((timer) 
+                ? { ...timer, elapsed: timer.elapsed + lastElapsed, runningSince: null }
+                : timer
+                )
             }),
-        });
+        );
     };
 
-    handleLapClick = (results) => {
-        this.setState(state => {
-            const lap = state.lap.concat(results);
-            return {
-                lap,
-            };
-        });
+    const handleLapClick = (results) => {
+        setLap([...lap, results]);
     };
 
 
-    render() {
         return (
             <>
                 <Timer
-                    time={this.state.time}
-                    laps={this.state.lap}
-                    onStartClick={this.handleStartClick}
-                    onStopClick={this.handleStopClick}
-                    onResetClick={this.handleResetClick}
-                    onLapClick={this.handleLapClick}
+                    time={time}
+                    laps={lap}
+                    onStartClick={handleStartClick}
+                    onStopClick={handleStopClick}
+                    onResetClick={handleResetClick}
+                    onLapClick={handleLapClick}
                 />
             </>
         );
-    }
 }
 
 export default StopWatchDashBoard;

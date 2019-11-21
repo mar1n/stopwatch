@@ -1,22 +1,22 @@
 import React from 'react';
 import Time from './Timerset';
 
-const Timer = (props) => {
-        const timer = props.time.map((time) => 
-            <div key={time.title} className='timer'>
+const Timer = ({time, onStartClick, onStopClick, onResetClick, onLapClick, laps}) => {
+        const timer = time.map((times) => 
+            <div key={times.title} className='timer'>
                 <Time
-                    title={time.title}
-                    project={time.project}
-                    elapsed={time.elapsed}
-                    runningSince={time.runningSince}
-                    onStartClick={props.onStartClick}
-                    onStopClick={props.onStopClick}
-                    onResetClick={props.onResetClick}
-                    onLapClick={props.onLapClick}
+                    title={times.title}
+                    project={times.project}
+                    elapsed={times.elapsed}
+                    runningSince={times.runningSince}
+                    onStartClick={onStartClick}
+                    onStopClick={onStopClick}
+                    onResetClick={onResetClick}
+                    onLapClick={onLapClick}
                 />
             </div>
         );
-        const laps = props.laps.map((laps, index) =>
+        const lap = laps.map((laps, index) =>
             <li key={index}>
                 {++index} Lap {laps}
             </li>
@@ -24,7 +24,7 @@ const Timer = (props) => {
         return (
             <>
                 {timer}
-                <ul>{laps}</ul>
+                <ul>{lap}</ul>
             </>
         );
 }
