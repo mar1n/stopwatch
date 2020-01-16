@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import TimerActionButton from './TimerActionButton';
-import {Helpers }from './Helpers.js'
+import { Helpers }from './Helpers.js'
 
 const Time = ({ onStartClick,
                 onStopClick,
@@ -51,13 +51,14 @@ const Time = ({ onStartClick,
             <div className="elapsedString">
                 {elapsedString}
             </div>
-            <TimerActionButton
+            {onStartClick 
+            && <TimerActionButton
                 timerIsRunning={!!runningSince}
                 onStartClick={handleStartClick}
                 onStopClick={handleStopClick}
                 onResetClick={handleResetClick}
                 onLapClick={handleLapClick}
-            />
+            /> }
         </div>
     );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import Time from './Timerset';
 
-const Timer = ({time, onStartClick, onStopClick, onResetClick, onLapClick, laps}) => {
+const Timer = ({time, single, onStartClick, onStopClick, onResetClick, onLapClick, laps}) => {
         const timer = time.map((times) => 
             <div key={times.title} className='timer'>
                 <Time
@@ -9,12 +9,24 @@ const Timer = ({time, onStartClick, onStopClick, onResetClick, onLapClick, laps}
                     project={times.project}
                     elapsed={times.elapsed}
                     runningSince={times.runningSince}
-                    onStartClick={onStartClick}
-                    onStopClick={onStopClick}
-                    onResetClick={onResetClick}
-                    onLapClick={onLapClick}
+                    // onStartClick={onStartClick}
+                    // onStopClick={onStopClick}
+                    // onResetClick={onResetClick}
+                    // onLapClick={onLapClick}
                 />
             </div>
+        );
+        const singleLap = single.map((times) => 
+        <div key={times.title} className='timer'>
+            <Time
+                elapsed={times.elapsed}
+                runningSince={times.runningSince}
+                onStartClick={onStartClick}
+                onStopClick={onStopClick}
+                onResetClick={onResetClick}
+                onLapClick={onLapClick}
+            />
+        </div>
         );
         const lap = laps.map((laps, index) =>
             <li key={index}>
@@ -24,7 +36,10 @@ const Timer = ({time, onStartClick, onStopClick, onResetClick, onLapClick, laps}
         return (
             <>
                 {timer}
-                <ul>{lap}</ul>
+                <ul>
+                    {singleLap}
+                    {lap}
+                </ul>
             </>
         );
 }

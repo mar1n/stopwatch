@@ -12,6 +12,12 @@ const StopWatchDashBoard = () => {
         }
     ]);
     const [lap, setLap] = useState([]);
+    const [singlelap, setSinglelap] = useState([
+        {
+            elapsed: null,
+            runningSince: null,
+        }
+    ]);
 
     const handleStartClick = () => {
         startTimer();
@@ -23,6 +29,10 @@ const StopWatchDashBoard = () => {
 
     const handleResetClick = () => {
         setTime( time
+            .map(timer =>  (
+                { ...timer, elapsed: null, runningSince: null }
+                )));
+        setSinglelap( singlelap
             .map(timer =>  (
                 { ...timer, elapsed: null, runningSince: null }
                 )));
@@ -40,6 +50,13 @@ const StopWatchDashBoard = () => {
                 : timer
             ),
         );
+        setSinglelap(
+            singlelap.map((timer) => 
+                timer
+                ? {...timer, runningSince: now}
+                : timer
+            ),
+        );
     };
 
     const stopTimer = () => {
@@ -53,18 +70,38 @@ const StopWatchDashBoard = () => {
                 )
             }),
         );
+        setSinglelap(
+            singlelap.map((timer) => {
+                const lastElapsed = now - timer.runningSince;
+                return ((timer) 
+                ? { ...timer, elapsed: timer.elapsed + lastElapsed, runningSince: null }
+                : timer
+                )
+            }),
+        );
     };
 
     const handleLapClick = (results) => {
+        console.log(results);
+        console.log(lap.length);
+        const now = Date.now();
         setLap([...lap, results]);
+        setSinglelap(
+            singlelap.map((timer) => 
+                timer
+                ? {...timer, elapsed:null, runningSince: now}
+                : timer
+            ),
+        );
     };
 
-
+console.log(lap);
         return (
             <>
                 <Timer
                     time={time}
                     laps={lap}
+                    single={singlelap}
                     onStartClick={handleStartClick}
                     onStopClick={handleStopClick}
                     onResetClick={handleResetClick}
