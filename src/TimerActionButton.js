@@ -4,13 +4,13 @@ const TimerActionButton = ({ timerIsRunning, onStopClick, onLapClick, onStartCli
         timerIsRunning ?
                 <>
                     <button
-                        className='ui bottom attached red basic button'
+                        className='stopButton'
                         onClick={onStopClick}
                     >
                         Stop
                     </button>
                     <button
-                        className='Lap'
+                        className='lapButton'
                         onClick={onLapClick}
                     >
                         Lap
@@ -20,13 +20,13 @@ const TimerActionButton = ({ timerIsRunning, onStopClick, onLapClick, onStartCli
 
                 <>
                     <button
-                        className='ui bottom attached green basic button'
+                        className='startButton'
                         onClick={onStartClick}
                     >
                         Start
                     </button>
                     <button
-                        className='reset'
+                        className='resetButton'
                         onClick={onResetClick}
                     >
                         Reset
