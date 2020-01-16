@@ -97,7 +97,7 @@ const StopWatchDashBoard = () => {
 
 console.log(lap);
         return (
-            <>
+            <div className='stopwatch'>
                 <Timer
                     time={time}
                     laps={lap}
@@ -107,7 +107,7 @@ console.log(lap);
                     onResetClick={handleResetClick}
                     onLapClick={handleLapClick}
                 />
-            </>
+            </div>
         );
 }
 

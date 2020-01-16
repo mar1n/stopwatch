@@ -1,5 +1,15 @@
+
+#root {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100vw;
+  height: 100vh;
+}
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .App-logo {
@@ -19,6 +29,7 @@
 
 ul {
   padding: 0;
+  margin: 0;
 }
 
 .App-link {
@@ -27,4 +38,10 @@ ul {
 
 .elapsedString {
   font-family: monospace;
+}
+
+.mainTimer .elapsedString {
+  background-color: tomato;
+  font-size: 50px;
+  padding: 20px;
 }

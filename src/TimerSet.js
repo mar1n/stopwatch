@@ -42,15 +42,10 @@ const Time = ({ onStartClick,
     const elapsedString = Helpers.renderElapsedString(elapsed, runningSince);
     return (
         <div className='ui centered card'>
-            <div className='header'>
-                {title}
-            </div>
-            <div className='meta'>
-                {project}
-            </div>
-            <div className="elapsedString">
-                {elapsedString}
-            </div>
+            
+    {title && <div className='header'>{title}</div>}
+            
+     {project && <div className='meta'> {project} </div>}
             {onStartClick 
             && <TimerActionButton
                 timerIsRunning={!!runningSince}
@@ -59,6 +54,10 @@ const Time = ({ onStartClick,
                 onResetClick={handleResetClick}
                 onLapClick={handleLapClick}
             /> }
+            <div className="elapsedString">
+                {elapsedString}
+            </div>
+
         </div>
     );
 }
