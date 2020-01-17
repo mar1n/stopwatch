@@ -41,7 +41,7 @@ const Time = ({ onStartClick,
 
     const elapsedString = Helpers.renderElapsedString(elapsed, runningSince);
     return (
-        <div className='ui centered card'>
+        <div className='lapBox'>
             
     {title && <div className='header'>{title}</div>}
             

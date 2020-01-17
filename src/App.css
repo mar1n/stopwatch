@@ -1,4 +1,8 @@
 
+
+button::-moz-focus-inner {
+  border: 0;
+}
 #root {
   display: grid;
   grid-template-columns: 1fr;
@@ -58,6 +62,8 @@ li {
   width: 60px;
   border-radius: 50%;
   outline: none;
+  opacity: 0.77;
+  color: chartreuse;
 }
 
 .stopButton {
@@ -66,6 +72,8 @@ li {
   width: 60px;
   border-radius: 50%;
   outline: none;
+  opacity: 0.77;
+  color: #fff;
 }
 
 .lapButton {
@@ -74,6 +82,8 @@ li {
   width: 60px;
   border-radius: 50%;
   outline: none;
+  opacity: 0.77;
+  color: #fff;
 }
 
 .resetButton {
@@ -82,5 +92,44 @@ li {
   width: 60px;
   border-radius: 50%;
   outline: none;
+  opacity: 0.77;
+  color: #fff;
 }
 
+.pane {
+  padding: .5em 2em;
+  color: #333;
+  line-height: 1.52;
+  max-width: 22em;
+  height: 15em;
+  overflow-y: scroll;
+  scrollbar-color: #7f7f7f #9900cc;
+  scrollbar-width: thin;
+}
+
+.scroller {
+  scrollbar-color: #7f7f7f #9900cc;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 7.5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #9900cc; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9900cc;
+  border-right: 1px solid white;
+}
+
+.lapBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.elapsedString {
+  grid-column: 1 / 3;
+}

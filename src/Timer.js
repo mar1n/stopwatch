@@ -25,7 +25,7 @@ const Timer = ({ time, single, onStartClick, onStopClick, onResetClick, onLapCli
         </div>
     );
     const lap = laps.map((laps, index) =>
-        <li key={index}>
+        <li className='scroller' key={index}>
             {++index} Lap {laps}
         </li>
     );
@@ -36,7 +36,9 @@ const Timer = ({ time, single, onStartClick, onStopClick, onResetClick, onLapCli
             </div>
             <ul>
                 {singleLap}
-                {lap}
+                <div className='pane'>
+                    {lap}
+                </div>
             </ul>
         </>
     );
