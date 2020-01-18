@@ -3,7 +3,7 @@ import React from 'react';
 const TimerActionButton = ({ timerIsRunning, onStopClick, onLapClick, onStartClick, onResetClick }) => (
         timerIsRunning ?
                 <>
-                <div className='buttonBox1'>
+                <div className='buttonBoxStop'>
                     <button
                         className='stopButton'
                         onClick={onStopClick}
@@ -23,7 +23,7 @@ const TimerActionButton = ({ timerIsRunning, onStopClick, onLapClick, onStartCli
         :
 
                 <>
-                <div className='buttonBox1'>
+                <div className='buttonBoxStart'>
                     <button
                         className='startButton'
                         onClick={onStartClick}
