@@ -11,7 +11,7 @@ const TimerActionButton = ({ timerIsRunning, onStopClick, onLapClick, onStartCli
                         Stop
                     </button>
                     </div>
-                    <div className='buttonBox2'>
+                    <div className='buttonBoxLap'>
                     <button
                         className='lapButton'
                         onClick={onLapClick}
@@ -31,7 +31,7 @@ const TimerActionButton = ({ timerIsRunning, onStopClick, onLapClick, onStartCli
                         Start
                     </button>
                     </div>
-                    <div className='buttonBox2'>
+                    <div className='buttonBoxReset'>
                     <button
                         className='resetButton'
                         onClick={onResetClick}

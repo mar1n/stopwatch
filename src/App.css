@@ -86,6 +86,7 @@ li {
   outline: none;
   opacity: 0.77;
   color: #fff;
+  border: 2px solid #9900cc;
 }
 
 .resetButton {
@@ -96,6 +97,7 @@ li {
   outline: none;
   opacity: 0.77;
   color: #fff;
+  border: 2px solid #9900cc;
 }
 
 .pane {
@@ -142,7 +144,8 @@ li {
   background-color: green;
   padding: 2px;
   border-radius: 50%;
-  
+  opacity: 0.77;
+  margin: auto;
 }
 
 .buttonBoxStop {
@@ -151,5 +154,25 @@ li {
   background-color: red;
   padding: 2px;
   border-radius: 50%;
-  
+  opacity: 0.77;
+  margin: auto;
+}
+.buttonBoxLap {
+  width: 80px;
+  height: 80px;
+  background-color: silver;
+  padding: 2px;
+  border-radius: 50%;
+  opacity: 0.77;
+  margin: auto;
+}
+
+.buttonBoxReset {
+  width: 80px;
+  height: 80px;
+  background-color: silver;
+  padding: 2px;
+  border-radius: 50%;
+  opacity: 0.77;
+  margin: auto;
 }

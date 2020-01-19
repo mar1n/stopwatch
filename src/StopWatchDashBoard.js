@@ -95,7 +95,6 @@ const StopWatchDashBoard = () => {
         );
     };
 
-console.log(lap);
         return (
             <div className='stopwatch'>
                 <Timer

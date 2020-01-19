@@ -5,15 +5,13 @@ const Timer = ({ time, single, onStartClick, onStopClick, onResetClick, onLapCli
     const timer = time.map((times) =>
         <div key={times.title} className='timer'>
             <Time
-                title={times.title}
-                project={times.project}
                 elapsed={times.elapsed}
                 runningSince={times.runningSince}
             />
         </div>
     );
-    const singleLap = single.map((times) =>
-        <div key={times.title} className='timer'>
+    const singleLap = single.map((times, index) =>
+        <div key={index} className='timer'>
             <Time
                 elapsed={times.elapsed}
                 runningSince={times.runningSince}
