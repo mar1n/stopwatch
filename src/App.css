@@ -48,7 +48,7 @@ li {
 }
 
 .elapsedString {
-  font-family: monospace;
+  font-family: digital;
 }
 
 .mainTimer .elapsedString {
@@ -106,7 +106,7 @@ li {
   line-height: 1.52;
   max-width: 22em;
   height: 15em;
-  overflow-y: scroll;
+  overflow: auto;
   scrollbar-color: #7f7f7f #9900cc;
   scrollbar-width: thin;
 }
@@ -114,9 +114,15 @@ li {
 .scroller {
   scrollbar-color: #7f7f7f #9900cc;
   scrollbar-width: thin;
+  color: #fff;
 }
 
+@font-face {
+  font-family: digital;
+  src: url(./font/digital-7-mono.ttf);
+}
 ::-webkit-scrollbar {
+  -webkit-appearance: none;
   width: 7.5px;
 }
 
@@ -125,8 +131,9 @@ li {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #9900cc;
-  border-right: 1px solid white;
+  border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 }
 
 .lapBox {
