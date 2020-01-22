@@ -29,14 +29,18 @@ const Timer = ({ time, single, onStartClick, onStopClick, onResetClick, onLapCli
     );
     return (
         <>
-            <div className='mainTimer'>
-                {timer}
-            </div>
-            <ul>
-                {singleLap}
-                <div className='pane'>
-                    {lap}
+            <section>
+                <div className='mainTimer'>
+                    {timer}
                 </div>
+            </section>
+            <ul>
+                <section>
+                    {singleLap}
+                    <div className='pane'>
+                        {lap}
+                    </div>
+                </section>
             </ul>
         </>
     );
