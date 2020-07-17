@@ -1,21 +1,34 @@
 import React, { useState } from 'react';
 import Timer from './Timer';
 
-const StopWatchDashBoard = () => {
+type time = {
+    title: string;
+    project: string;
+    elapsed: number;
+    runningSince: number;
+}
 
-    const [time, setTime] = useState([
+type singlelap = {
+    elapsed: number;
+    runningSince: number;
+}
+
+
+const StopWatchDashBoard: React.FC = () => {
+
+    const [time, setTime] = useState<time []>([
         {
             title: 'StopWatch',
             project: 'Web Timer',
-            elapsed: null,
-            runningSince: null,
+            elapsed: 0,
+            runningSince: 0,
         }
     ]);
-    const [lap, setLap] = useState([]);
-    const [singlelap, setSinglelap] = useState([
+    const [lap, setLap] = useState<string []>([]);
+    const [singlelap, setSinglelap] = useState<singlelap []>([
         {
-            elapsed: null,
-            runningSince: null,
+            elapsed: 0,
+            runningSince: 0,
         }
     ]);
 
@@ -30,11 +43,11 @@ const StopWatchDashBoard = () => {
     const handleResetClick = () => {
         setTime( time
             .map(timer =>  (
-                { ...timer, elapsed: null, runningSince: null }
+                { ...timer, elapsed: 0, runningSince: 0 }
                 )));
         setSinglelap( singlelap
             .map(timer =>  (
-                { ...timer, elapsed: null, runningSince: null }
+                { ...timer, elapsed: 0, runningSince: 0 }
                 )));
         setLap( [] );
     };
@@ -65,16 +78,18 @@ const StopWatchDashBoard = () => {
             time.map((timer) => {
                 const lastElapsed = now - timer.runningSince;
                 return ((timer) 
-                ? { ...timer, elapsed: timer.elapsed + lastElapsed, runningSince: null }
+                ? { ...timer, elapsed: timer.elapsed + lastElapsed, runningSince: 0 }
                 : timer
                 )
+                
+               
             }),
         );
         setSinglelap(
             singlelap.map((timer) => {
                 const lastElapsed = now - timer.runningSince;
                 return ((timer) 
-                ? { ...timer, elapsed: timer.elapsed + lastElapsed, runningSince: null }
+                ? { ...timer, elapsed: timer.elapsed + lastElapsed, runningSince: 0 }
                 : timer
                 )
             }),
@@ -89,7 +104,7 @@ const StopWatchDashBoard = () => {
         setSinglelap(
             singlelap.map((timer) => 
                 timer
-                ? {...timer, elapsed:null, runningSince: now}
+                ? {...timer, elapsed:0, runningSince: now}
                 : timer
             ),
         );

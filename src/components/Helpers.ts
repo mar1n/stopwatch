@@ -1,9 +1,13 @@
+interface attrs {
+    title: string;
+    project: string;
+}
+
 export  const Helpers = (function () {
-  function newTimer(attrs = {}) {
+  function newTimer(attrs: attrs) {
     const timer = {
         title: attrs.title || 'Timer',
         project: attrs.project || 'Project',
-        id: uuid.v4(), // eslint-disable-line no-undef
         elapsed: 0,
     };
     return timer;

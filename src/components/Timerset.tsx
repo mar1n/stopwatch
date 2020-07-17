@@ -1,15 +1,22 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import TimerActionButton from './TimerActionButton';
-import { Helpers }from './Helpers.js'
+import { Helpers }from './Helpers'
 
-const Time = ({ onStartClick,
+interface IProps {
+    onStartClick?: () => void;
+    onStopClick?: () => void;
+    onResetClick?: () => void;
+    onLapClick?: (results: any) => void;
+    elapsed: number;
+    runningSince: number;
+}
+
+const Time: React.FC<IProps> = ({ onStartClick,
                 onStopClick,
                 onResetClick,
                 onLapClick,
                 elapsed,
-                runningSince,
-                project,
-                title
+                runningSince
             }) => {
     const [, forceState] = useState();
     const forceUpdate = useCallback(() => forceState({}), []);
@@ -22,30 +29,36 @@ const Time = ({ onStartClick,
     }, [forceUpdate]);
 
     const handleStartClick = () => {
-        onStartClick();
+        if(onStartClick) {
+            onStartClick();
+        }
+        
     };
 
     const handleStopClick = () => {
-        onStopClick();
+        if(onStopClick) {
+            onStopClick();
+        }
+        
     };
 
     const handleResetClick = () => {
-        onResetClick();
+        if(onResetClick) {
+            onResetClick();
+        }
     };
 
     const handleLapClick = () => {
         const result = Helpers.renderElapsedString(elapsed, runningSince);
-        onLapClick(result);
+        if(onLapClick) {
+            onLapClick(result);
+        }
     };
 
 
     const elapsedString = Helpers.renderElapsedString(elapsed, runningSince);
     return (
         <div className='lapBox'>
-            
-    {title && <div className='header'>{title}</div>}
-            
-     {project && <div className='meta'> {project} </div>}
             {onStartClick 
             && <TimerActionButton
                 timerIsRunning={!!runningSince}

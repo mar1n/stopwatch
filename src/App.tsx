@@ -1,15 +1,12 @@
 import React from 'react';
-import StopWatchDashboard from './StopWatchDashboard';
+import StopWatchDashboard from './components/StopWatchDashboard';
 import './App.css';
 
-function App() {
-  return (
+const App = () =>
     <div className="App">
       <main>
         <StopWatchDashboard />
       </main>
     </div>
-  );
-}
 
 export default App;

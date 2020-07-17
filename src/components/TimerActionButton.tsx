@@ -1,6 +1,12 @@
 import React from 'react';
-
-const TimerActionButton = ({ timerIsRunning, onStopClick, onLapClick, onStartClick, onResetClick }) => (
+interface IProps {
+    timerIsRunning: boolean;
+    onStopClick: ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void);
+    onStartClick: ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void);
+    onLapClick: ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void);
+    onResetClick: ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void);
+}
+const TimerActionButton: React.FC<IProps> = ({ timerIsRunning, onStopClick, onLapClick, onStartClick, onResetClick }) => (
         timerIsRunning ?
                 <>
                 <div className='buttonBoxStop'>

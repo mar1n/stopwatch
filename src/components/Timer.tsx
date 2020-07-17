@@ -1,7 +1,26 @@
 import React from 'react';
 import Time from './Timerset';
+type time = {
+    title: string;
+    project: string;
+    elapsed: number;
+    runningSince: number;
+}
+type singlelap = {
+    elapsed: number;
+    runningSince: number;
+}
+interface IProps {
+    time: time[];
+    single: singlelap[];
+    onStartClick: () => void | undefined;
+    onStopClick: () => void;
+    onResetClick: () => void;
+    onLapClick: (results: any) => void;
+    laps: string[];
+}
 
-const Timer = ({ time, single, onStartClick, onStopClick, onResetClick, onLapClick, laps }) => {
+const Timer: React.FC<IProps> = ({ time, single, onStartClick, onStopClick, onResetClick, onLapClick, laps }) => {
     const timer = time.map((times) =>
         <div key={times.title} className='timer'>
             <Time
