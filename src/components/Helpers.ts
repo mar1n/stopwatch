@@ -13,16 +13,16 @@ export  const Helpers = (function () {
     return timer;
   }
 
-  function findById(array, id, cb) {
-      array.forEach((el) => {
-          if (el.id === id) {
-              cb(el);
-              return;
-          }
-      });
-  }
+//   function findById(array: any, id: number, cb: () => void) {
+//       array.forEach((el) => {
+//           if (el.id === id) {
+//               cb(el);
+//               return;
+//           }
+//       });
+//   }
 
-  function renderElapsedString(elapsed, runningSince) {
+  function renderElapsedString(elapsed: number, runningSince: number) {
       let totalElapsed = elapsed;
       if (runningSince) {
           totalElapsed += Date.now() - runningSince;
@@ -30,7 +30,7 @@ export  const Helpers = (function () {
       return millisecondsToHuman(totalElapsed);
   }
 
-  function millisecondsToHuman(ms) {
+  function millisecondsToHuman(ms: number) {
       const milliseconds = new Date(ms);
       const seconds = Math.floor((ms / 1000) % 60);
       const minutes = Math.floor((ms / 1000 / 60) % 60);
@@ -46,7 +46,7 @@ export  const Helpers = (function () {
       return humanized;
   }
 
-  function pad(numberString, size) {
+  function pad(numberString: string, size: number) {
       let padded = numberString;
       while (padded.length < size) padded = `0${padded}`;
       return padded;
@@ -55,7 +55,7 @@ export  const Helpers = (function () {
   return {
       millisecondsToHuman,
       newTimer,
-      findById,
+    //   findById,
       renderElapsedString,
   };
 }());

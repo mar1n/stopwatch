@@ -96,7 +96,7 @@ const StopWatchDashBoard: React.FC = () => {
         );
     };
 
-    const handleLapClick = (results) => {
+    const handleLapClick = (results: string) => {
         console.log(results);
         console.log(lap.length);
         const now = Date.now();
